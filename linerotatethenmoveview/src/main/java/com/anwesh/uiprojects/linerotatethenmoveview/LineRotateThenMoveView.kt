@@ -182,4 +182,26 @@ class LineRotateThenMoveView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotateThenMoveView) {
+
+        private val animator : Animator = Animator(view)
+        private val lrtm : LineRotateThenMove = LineRotateThenMove(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            lrtm.draw(canvas, paint)
+            animator.animate {
+                lrtm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrtm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
