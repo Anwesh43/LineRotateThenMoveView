@@ -179,7 +179,7 @@ class LineRotateThenMoveView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdating(cb : () -> Unit) : LRTMNode {
+        fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
         }
     }
@@ -203,6 +203,15 @@ class LineRotateThenMoveView(ctx : Context) : View(ctx) {
             lrtm.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity : Activity) : LineRotateThenMoveView {
+            val view : LineRotateThenMoveView = LineRotateThenMoveView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
