@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LinkedRotateThenMoveView.iml" filepath="$PROJECT_DIR$/LinkedRotateThenMoveView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/linerotatethenmoveview/linerotatethenmoveview.iml" filepath="$PROJECT_DIR$/linerotatethenmoveview/linerotatethenmoveview.iml" />
+    </modules>
+  </component>
+</project>
