@@ -24,3 +24,29 @@ fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 fun Float.sinify() : Float = Math.sin(this * Math.PI).toFloat()
+
+fun Canvas.drawLineRotateThenMove(w : Float, scale : Float, paint : Paint) {
+    val gap : Float = w / (steps + 1)
+    val sf : Float = scale.sinify()
+    val scGapFloor : Float = sf / steps
+    val i : Int = Math.floor(sf.toDouble() / scGapFloor).toInt()
+    val sfi : Float = sf.divideScale(i, steps)
+    save()
+    translate(gap * (i + 1), paint.strokeWidth / 2)
+    rotate(-180f * sfi)
+    drawLine(0f, 0f, -gap / 2, 0f, paint)
+    restore()
+}
+
+fun Canvas.drawLRTMNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    val gap : Float = h / (nodes + 1)
+    paint.color = foreColor
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    save()
+    translate(0f, gap * (i + 1))
+    drawLineRotateThenMove(w, scale, paint)
+    restore()
+}
